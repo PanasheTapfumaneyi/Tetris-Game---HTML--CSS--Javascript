@@ -1,0 +1,147 @@
+
+/* Border for the game screen */
+.gameborder {
+    border: 2px solid #000;
+    height: 650px;
+    width: 1000px;
+    background-color: rgba(0, 217, 255, 0.16);
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 25px;
+  }
+  
+  /* Score bar to display the current score for the user */
+  .score-bar {
+    position: absolute;
+    text-align: center;
+    right: 10px;
+    top: 10px;
+    left: 10px;
+    height: 78px;
+    background: #ffffff;
+    border-radius: 15px;
+  }
+  
+  /* Bar to display the tetriminos that would be held */
+  .hold-bar {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    color: rgb(0, 0, 0);
+    height: 150px;
+    width: 200px;
+    top: 130px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 14px;
+
+  }
+
+  /* Bar to display the currently active twists */
+  .twists-bar {
+    position: absolute;
+    top: 300px;
+    left: 10px;
+    right: 10px;
+    color: rgb(0, 0, 0);
+    height: 330px;
+    width: 200px;
+    background: #ffffff;
+    border-radius: 15px;
+    text-align: center;
+  }
+  
+  /* Placeholder for the section that the game will be displayed in */
+  .game-screen {
+    position: absolute;
+    top: 125px;
+    left: 230px;
+    right: 10px;
+    color: rgb(3, 3, 3);
+    height: 500px;
+    width: 540px;
+    background: #ffffff;
+    border-radius: 15px;
+    text-align: center;
+  }
+/* Styling for game grid */
+  .game-board{
+    position: absolute;
+    left: 155px;
+    bottom: 15px;
+    width: 230px;
+    height: 460px;
+    background-color: yellow;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .game-board div{
+    height: 23px;
+    width: 23px;
+  }
+
+  /* Screen that will show the tetriminos that will be coming up next */
+  .next-screen {
+    position: absolute;
+    top: 0;
+    left: 560px;
+    /* right: 10px; */
+    color: rgb(0, 0, 0);
+    height: 200px;
+    width: 200px;
+    background: #ffffff;
+    border-radius: 15px;
+    text-align: center;
+  }
+  
+  /* Styling for the the drawer design*/
+  .drawer-content {
+    display: none;
+    position: absolute;
+    background: #717171;
+    color: #000;
+    padding: 10px;
+    width: 150px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    height: 600px;
+    width: 250px;
+    font-size: 45px;
+  }
+  
+  /* Styling for drawer button */
+  .drawer-btn {
+    font-size: 45px;
+    color: white;
+  }
+  
+  /* Styling for the drawer positioning */
+  .show-menu {
+    display: block;
+  }
+  /* Font size styling for the text inside the drawer */
+  .twists-names {
+    font-size: 15px;
+  }
+  
+  .tetrominos {
+    background-color: blue;
+  }
+
+  .next-grid{
+    position: absolute;
+    left: 28px;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: yellowgreen;
+  }
+
+  .next-grid div{
+    height: 30px;
+    width: 30px;    
+  }

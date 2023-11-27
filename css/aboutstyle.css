@@ -1,0 +1,114 @@
+/* Global Styling */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* About us section styling */
+.about-us{
+    margin-top: 60px;
+    margin-left: 10%;
+    margin-bottom: 20px;
+    padding: 80px 0px;
+    background-color: #bebebe;
+    width: 80%;
+    border-radius: 25px;
+}
+
+/* Container styling */
+.container{
+    margin: auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+/* Styling for row */
+.row{
+    flex-wrap: wrap;
+    display: flex;
+}
+
+/* Flex element */
+.flex{
+    padding: 10px;
+    flex: 0 0 60%;
+    max-width: 50%;
+}
+/* H2 styling for about us */
+.about-us h2{
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: yellow;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+/* H3 styling in about us */
+.about-us h3{
+    font-size: 25px;
+    margin-bottom: 5px;
+    color: #00ff22;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+/* H4 styling in about us */
+.about-us h4{
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #00a2ff;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+}
+
+/* Paragraph styling in about us */
+.about-us p{
+    font-size: 14px;
+    line-height: 19px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 21px;
+}
+
+/* Styling for image */
+.about-us img{
+    max-width: 100%;
+    display: block;
+    margin: auto;
+    border-radius: 30px;
+    height: auto;
+}
+
+/* Social media icons styling */
+.socials{
+    margin-bottom: 10px;
+}
+.socials a{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 52px;
+    border-radius:50% ;
+    color: rgb(118, 118, 118);
+    background-color: rgb(255, 255, 255);
+    transition: all 0.8s ease;
+}
+.socials a:hover{
+    transform: translateY(-7px);
+}
+.learn-button {
+    border-color: #4b614f;
+    padding: 9px 9px;
+    font-size: 25px;
+    gap: 8px;
+    justify-content: center;
+    background-color: #00ff2f;
+    color: #000000;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+}

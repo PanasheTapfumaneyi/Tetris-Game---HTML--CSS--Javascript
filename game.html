@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game Page</title>
+    <script src="js/game.js"></script>
+    <link rel="stylesheet" href="css/gamepagestyle.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div class="announcement-container">
+      <div class="announcement-banner">
+        <marquee behavior="scroll" direction="right"></marquee>
+      </div>
+    </div>
+    <section class="hero">
+      <div class="main-width">
+        <header>
+          <nav class="left-nav">
+            <ul>
+              <li>
+                <div class="drawer-btn">☰</div>
+                <div class="drawer-content">
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <p id="drawer-header">MODES</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <p id="twists-names">Regular-Infinite</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <p id="twists-names">Speed Run</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <p id="twists-names">Puzzle</p>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="about.html">About</a>
+              </li>
+              <li>
+                <a href="high-scores.html">High Scores</a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+      </div>
+      <div class="gameborder">
+        <div class="score-bar">
+          <h2>SCORE: <span id="score">0</span>
+          </h2>
+        </div>
+        <!-- <button id="start-pause-button">Start/Pause</button> -->
+        <div class="hold-bar">
+          <h2>HOLD</h2>
+        </div>
+        <div class="game-screen">
+          <h2>GAME</h2>
+          <div class="game-board">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="taken"></div>
+            <div class="taken"></div>
+            <div class="taken"></div>
+            <div class="taken"></div>
+            <div class="taken"></div>
+            <div class="taken"></div>
+            <div class="taken"></div>
+            <div class="taken"></div>
+            <div class="taken"></div>
+            <div class="taken"></div>
+          </div>
+          <div class="next-screen">
+            <h2>NEXT</h2>
+            <div class="next-grid">
+
+
+
+
+
+
+
+
+
+
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+        <div class="twists-bar">
+          <h2>TWISTS</h2>
+        </div>
+      </div>
+    </section>
+    <div class="backgroundimage"></div>
+    <section class="footer">
+      <div class="col-1">
+        <h3>SPONSORS</h3>
+        <div class="sponsor-container">
+          <img class="sponsor-logo" src="images/amdlogo.png" alt="" />
+          <img class="sponsor-logo" src="images/m&m.png" alt="M&M Logo">
+          <img class="sponsor-logo" src="images/nikelogo.png" alt="" />
+        </div>
+      </div>
+      <div class="col-2">
+        <h3>NEWSLETTER</h3>
+        <form>
+          <input type="email" placeholder="Enter Your Email">
+          <button type="submit">SUBSCRIBE</button>
+        </form>
+      </div>
+      <div class="col-3">
+        <h3>CONTACT US</h3>
+        <p>Call: +230 5954 9875</p>
+        <p>Email: CT820@live.mdx.ac.uk</p>
+        <p>Address: Coastal Road, 90203, Uniciti, Mauritius </p>
+      </div>
+    </section>
+    <script>
+      const drawerBtn = document.querySelector('.drawer-btn');
+      const drawerContent = document.querySelector('.drawer-content');
+      drawerBtn.addEventListener('click', () => {
+        drawerContent.classList.toggle('show-menu');
+      });
+    </script>
+  </body>
+</html>

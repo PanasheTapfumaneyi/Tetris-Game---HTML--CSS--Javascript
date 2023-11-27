@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Title -->
+    <title>Tetris Rainbow Rush!</title>
+    <!-- Google fonts link for Bangers -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
+    <!-- Stylesheet links -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/highscorestyle.css">
+    <!-- Preconnect links to make google fonts load faster -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Font awesone icons link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <!-- Code for the announcement Bar -->
+    <div class="announcement-container">
+      <div class="announcement-banner">
+        <!-- Announcement bar text -->
+        <marquee behavior="scroll" direction="right">ANNOUNCEMENT, GET READY TO TETRIS!</marquee>
+      </div>
+    </div>
+    <!-- Hero section -->
+    <section class="hero">
+      <div class="main-width">
+        <header>
+          <!-- Navigation Bar -->
+          <nav class="left-nav">
+            <ul>
+              <li class="active">
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="about.html">About</a>
+              </li>
+              <li>
+                <a href="high-scores.html">High Scores</a>
+              </li>
+            </ul>
+          </nav>
+          <!-- Social Media navigation links -->
+          <nav class="right-nav">
+            <ul>
+              <li>
+                <a href="https://twitter.com/Tetris_Official">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <!-- Main Page -->
+        <div class="content">
+          <div class="main">
+            <!-- Game title -->
+            <h6>PLAY TETRIS NOW!</h6>
+            <h1 class="tetris-logo">TETRIS</h1>
+            <H2>RAINBOW RUSH</H2>
+            <!-- Login and Sign Up buttons -->
+            <div class="buttons">
+              <button class="login-button" onclick="checkLogIn()"> Login </button>
+              <button class="signup-button" onclick="checkSignUp()"> Sign-up </button>
+            </div>
+            <!-- Game description box nd how to play video -->
+            <div class="boxes">
+              <div class="description-box">
+                <h3>Description</h3>
+                <p>Russian game inventor Alexey Pajitnov invented the renowned puzzle video game Tetris in 1984. The objective of the game is to create uninterrupted horizontal lines by manipulating "tetrominoes," which are falling geometric forms. A gapless created line vanishes, making room for more formations. The falling forms get faster as the game goes on, testing the player's reflexes and quick thinking. The main objective is to keep tetrominoes from filling the screen. Tetris is widely known for its easy accessibility, captivating gameplay, and difficult level, making it one of the most well-known and classic video games ever created.</p>
+                <!-- Embedded YouTube video -->
+                <iframe width="420" height="250" src="https://www.youtube.com/embed/Vw390Xixp_s" title="Learn How to Play TETRIS in Under 5 minutes!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <!-- High Scores box which shows top 5 high scorers -->
+              <div class="high-scores-box">
+                <h3>High Scores:</h3>
+                <div class="wrapper">
+                  <!-- Table showing the high scorers -->
+                  <table>
+                    <caption>TOP 10 HIGH SCORES</caption>
+                    <tr>
+                      <th>RANK</th>
+                      <th>NAME</th>
+                      <th>SCORE</th>
+                    </tr>
+                    <tr class="first">
+                      <td>1</td>
+                      <td>Tod124</td>
+                      <td>122</td>
+                    </tr>
+                    <tr class="second">
+                      <td>2</td>
+                      <td>Master209</td>
+                      <td>87</td>
+                    </tr>
+                    <tr class="third">
+                      <td>3</td>
+                      <td>FireBall23</td>
+                      <td>75</td>
+                    </tr>
+                    <tr class="fourth">
+                      <td>4</td>
+                      <td>Gareth</td>
+                      <td>30</td>
+                    </tr>
+                    <tr class="fifth">
+                      <td>5</td>
+                      <td>Heather</td>
+                      <td>14</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      </div>
+    </section>
+    <!-- Footer section -->
+    <section class="footer">
+      <!-- Column for sponsors logos -->
+      <div class="col-1">
+        <h3>SPONSORS</h3>
+        <div class="sponsor-container">
+          <img class="sponsor-logo" src="images/amdlogo.png" />
+          <img class="sponsor-logo" src="images/m&m.png">
+          <img class="sponsor-logo" src="images/nikelogo.png" />
+        </div>
+      </div>
+      <!-- Column for Newsletter sign up -->
+      <div class="col-2">
+        <h3>NEWSLETTER</h3>
+        <form>
+          <input type="email" placeholder="Enter Your Email">
+          <button type="submit">SUBSCRIBE</button>
+        </form>
+      </div>
+      <!-- Column for contact information -->
+      <div class="col-3">
+        <h3>CONTACT US</h3>
+        <p>Call: +230 5954 9875</p>
+        <p>Email: CT820@live.mdx.ac.uk</p>
+        <p>Address: Coastal Road, 90203, Uniciti, Mauritius </p>
+      </div>
+    </section>
+    <!-- Ionicons script -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

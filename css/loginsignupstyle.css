@@ -1,0 +1,251 @@
+/* reset defult styling and set font to Bangers */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Bangers", cursive;
+}
+  /* Body Style, positioning and sizes of the background */
+body {
+  overflow-x: hidden;
+  background-image: url("../images/backgroundimagetwo.png");
+  background-position: top;
+  background-size: 90%;
+}
+
+/* Styling for login box */
+.box {
+  overflow: hidden;
+  position: relative;
+  width: 380px;
+  height: 700px;
+  background: rgba(16, 16, 16, 0.5);
+  border-radius: 8px;
+  top: 20px;
+  margin: auto;
+}
+/* Animation style, before transformation */
+.box:before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 380px;
+  height: 700px;
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent,
+    #ff0000,
+    #fbff00,
+    #3cff00,
+    #0000ff
+  );
+  z-index: 1;
+  transform-origin: bottom right;
+  animation: animate 8s linear infinite;
+}
+/* Animation style, the final design after transition */
+.box:after {
+  content: "";
+  position: absolute;
+  left: -50%;
+  top: -50%;
+  width: 380px;
+  height: 700px;
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent,
+    #eeff00,
+    #00ff0d,
+    #0000ff,
+    #ff0000
+  );
+  z-index: 1;
+  transform-origin: bottom right;
+  animation: animate 8s linear infinite;
+  animation-delay: -5s;
+}
+.borderLine {
+  inset: 0;
+  top: 0;
+  position: absolute;
+}
+.borderLine:before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 380px;
+  height: 700px;
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent,
+    #00ff0d,
+    #0000ff,
+    #ff0000,
+    #eeff00
+  );
+  z-index: 1;
+  transform-origin: bottom right;
+  animation: animate 8s linear infinite;
+  animation-delay: -1.8s;
+}
+.borderLine:after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 380px;
+  height: 700px;
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent,
+    #0000ff,
+    #ff0000,
+    #eeff00,
+    #00ff0d
+  );
+  z-index: 1;
+  transform-origin: bottom right;
+  animation: animate 8s linear infinite;
+  animation-delay: -4.3s;
+}
+/* Keyframes for animations */
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Styling for form withing the box */
+.box form {
+  position: absolute;
+  inset: 4.5px;
+  background: #292929;
+  padding: 45px 38px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+.box form h2 {
+  color: #fff;
+  font-weight: 480  ;
+  text-align: center;
+}
+
+/* Input box styling */
+.box form .inputBox {
+  position: relative;
+  width: 300px;
+  margin-top: 35px;
+}
+.box form .inputBox input {
+  position: relative;
+  width: 100%;
+  padding: 18px 9px 9px;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  color: #23242a;
+  transition: 0.6s;
+  z-index: 10;
+}
+
+/* Animation and styling for input boxes when clicked */
+.box form .inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 20px 0px 10px;
+  pointer-events: none;
+  color: #8f8f8f;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+}
+.box form .inputBox input:valid ~ span,
+.box form .inputBox input:focus ~ span {
+  color: #fff;
+  font-size: 0.75em;
+  transform: translateY(-34px);
+}
+.box form .inputBox i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: 0.5s;
+  pointer-events: none;
+}
+.box form .inputBox input:valid ~ i,
+.box form .inputBox input:focus ~ i {
+  height: 44px;
+}
+
+/* Styling for links */
+.links {
+  display: flex;
+  justify-content: space-between;
+}
+.box form .links a {
+  margin: 10px 0;
+  color: #8f8f8f;
+  text-decoration: none;
+  font-size: 0.75em;
+
+}
+/* Hover animations for links */
+.box form .links a:hover,
+.box form .links a:nth-child(2) {
+  color: #fff;
+}
+
+/* Submit button styling */
+.box form input[type="submit"] {
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  font-weight: 600;
+  width: 100px;
+  padding: 9px 25px;
+  background: #fff;
+  cursor: pointer;
+
+  margin-top: 10px;
+}
+
+.box form input[type="submit"]:active {
+  opacity: 0.6;
+}
+.submit {
+  margin-top: 9px;
+  padding: 28px 15px;
+  font-size: 35px;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  background-color: #eeeeee;
+  color: #000000;
+  border: none;
+  z-index: 0;
+}
+
+p {
+  color: red;
+  font-size: 10px;
+}
+
+h7{
+  color: white;
+}
