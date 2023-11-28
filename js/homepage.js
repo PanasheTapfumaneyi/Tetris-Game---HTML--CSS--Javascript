@@ -1,5 +1,6 @@
 let header = document.getElementById("header");
 
+// Function to display the username in the header
 function displayName() {
   let username = localStorage.getItem('username')
   if(localStorage.username != undefined)
@@ -8,7 +9,10 @@ function displayName() {
 
 displayName();
 
+// Function for logout button
 function logoutBtn(){
+  // Remove the current user from session storage
   sessionStorage.removeItem('loggedInUsr');
+  // Redirect to the main page
   window.location.href = "index.html";
 }

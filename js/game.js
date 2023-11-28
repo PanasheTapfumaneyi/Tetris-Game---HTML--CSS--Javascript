@@ -2,12 +2,14 @@ document.addEventListener('DOMContentLoaded',() => {
     const gameboard = document.querySelector('.game-board')
     let squares = Array.from(document.querySelectorAll('.game-board div'))
     const width = 10
-    const Score = document.getElementById('score')
-    const StartPauseBtn = document.getElementById('start-pause-button')
+    const score = document.getElementById('score')
+    const startPauseBtn = document.querySelector('#start-pause-button')
     let randomNextTetromino = 0
+    let timerID
+    let gamePaused = false; // Track the game's paused state
     
 
-    //Tetrominos
+//Building the tetromino shapes
 
 const  lTetromino = [
     [0, width, width*2, 1],
@@ -111,7 +113,7 @@ document.addEventListener('keydown', (e) => {
 
 //Making the tetrominos move down
 
-timer = setInterval(moveDown, 1000)
+// gamePaused = setInterval(moveDown, 1000)
 
 
 
@@ -137,10 +139,7 @@ function freeze(){
     }
 }
 
-
-
-
-//Move tetromino left until it hits wall
+//Move tetromino left until it hits the wall
 function moveTetrominoLeft() {
     removeTetromino()
     const leftWall = current.some(index => (currentPosition + index) % width === 0)
@@ -186,21 +185,62 @@ function moveTetrominoRight() {
  const nextTetromino = [
     [2,3,7,12], //lTetromino
     [6,7,12,13], //zTetromino
+    [10,11,12,13], //iTetromino
     [7,11,12,13], //tTetromino
     [7,8,12,13], //oTetromino
-    [10,11,12,13], //iTetromino
-
  ]
 
 // Function to display the next tetromino
 function showTetromino() {
     displaySquares.forEach(square => {
-        square.classList.remove('tetrominos'); // Clear previous tetromino shapes
+        square.classList.remove('tetrominos');
     });
     nextTetromino[randomNextTetromino].forEach(index => {
-        displaySquares[displayIndex + index].classList.add('tetrominos'); // Add tetromino shape to corresponding divs
+        displaySquares[index].classList.add('tetrominos');
     });
 }
+
+//Start/Pause button
+
+    startPauseBtn.addEventListener('click', () => {
+        startPauseBtn.textContent = "Start"
+        if (gamePaused) {
+            // If game is paused, resume by setting the interval again
+            timerID = setInterval(moveDown, 1000);
+            startPauseBtn.textContent = 'Pause'; // Change button text to 'Pause'
+            gamePaused = false; // Update gamePaused state
+        } else {
+            // If game is running, pause by clearing the interval
+            clearInterval(timerID);
+            startPauseBtn.textContent = 'Resume'; // Change button text to 'Resume'
+            gamePaused = true; // Update gamePaused state
+        }
+    });
+
+// startPauseBtn.addEventListener('click', () => {
+//     console.log('Button clicked');
+//     if (timerID){
+//         clearInterval(timerID);
+//         timerID = null;
+//     } else {
+//         createTetromino();
+//         timerID = setInterval(moveDown, 1000);
+//         randomNextTetromino = Math.floor(Math.random() * tetrominoObjects.length);
+//         showTetromino();
+//     }
+// });
+
+// startPauseBtn.addEventListener('click', () => {
+//     if (timerId) {
+//       clearInterval(timerId)
+//       timerId = null
+//     } else {
+//       draw()
+//       timerId = setInterval(moveDown, 1000)
+//       nextRandom = Math.floor(Math.random()*theTetrominoes.length)
+//       displayShape()
+//     }
+//   })
 
 
 

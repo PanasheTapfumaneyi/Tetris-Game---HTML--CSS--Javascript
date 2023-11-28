@@ -39,16 +39,16 @@
           <!-- Sign Up Form -->
           <form onsubmit="return checkPassword()" name="regForm" id="registrationForm">
             <h2>Sign Up</h2>
-            <!-- Username/Email input box -->
+            <!-- Username input box -->
             <div class="inputBox">
               <input type="text" required="required" id="username">
-              <span>Username/Email</span>
+              <span>Username</span>
               <i></i>
             </div>
             <!-- Birthday selector, hide the "dd/mm/yyyy" -->
             <div class="inputBox">
-              <input type="date" required="required" id="birthday" >
-              <span>Birthday</span>
+              <input type="email" required="required" id="email" >
+              <span>Email</span>
               <i></i>
             </div>
             <div class="inputBox">
@@ -59,9 +59,10 @@
               </select>
               <i></i>
             </div>
+            <!-- Country/Region Input box -->
             <div class="inputBox">
               <input type="text" required="required" id="country">
-              <span>Region</span>
+              <span>Country/Region</span>
               <i></i>
             </div>
             <!-- Password input box -->
@@ -115,7 +116,9 @@
         <p>Address: Coastal Road, 90203, Uniciti, Mauritius </p>
       </div>
     </section>
+    <script>
 
+    </script>
     <script src="js/signup.js"></script>  
   </body>
 </html>
