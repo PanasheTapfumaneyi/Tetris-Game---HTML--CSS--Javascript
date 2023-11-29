@@ -2,11 +2,12 @@ document.addEventListener('DOMContentLoaded',() => {
     const gameboard = document.querySelector('.game-board')
     let squares = Array.from(document.querySelectorAll('.game-board div'))
     const width = 10
-    const score = document.getElementById('score')
+    const displayScore = document.getElementById('score')
     const startPauseBtn = document.querySelector('#start-pause-button')
     let randomNextTetromino = 0
     let timerID
-    let gamePaused = false; // Track the game's paused state
+    let isPaused = false; // Track the game's paused state
+    let userScore = 0
     
 
 //Building the tetromino shapes
@@ -111,12 +112,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-//Making the tetrominos move down
-
-// gamePaused = setInterval(moveDown, 1000)
-
-
-
 //Function to make tetrominos move down
 
 function moveDown() {
@@ -136,6 +131,7 @@ function freeze(){
         currentPosition = 4
         createTetromino()
         showTetromino()
+        showScore()
     }
 }
 
@@ -202,51 +198,65 @@ function showTetromino() {
 
 //Start/Pause button
 
-    startPauseBtn.addEventListener('click', () => {
-        startPauseBtn.textContent = "Start"
-        if (gamePaused) {
-            // If game is paused, resume by setting the interval again
-            timerID = setInterval(moveDown, 1000);
-            startPauseBtn.textContent = 'Pause'; // Change button text to 'Pause'
-            gamePaused = false; // Update gamePaused state
-        } else {
-            // If game is running, pause by clearing the interval
-            clearInterval(timerID);
-            startPauseBtn.textContent = 'Resume'; // Change button text to 'Resume'
-            gamePaused = true; // Update gamePaused state
-        }
-    });
+    // startPauseBtn.addEventListener('click', () => {
+    //     if (gamePaused) {
+    //         timerID = setInterval(moveDown, 1000);
+    //         startPauseBtn.textContent = 'Pause';
+    //         gamePaused = false; 
+    //     } else {
+    //         clearInterval(timerID);
+    //         startPauseBtn.textContent = 'Resume'; 
+    //         gamePaused = true; 
+    //     }
+    // });
 
-// startPauseBtn.addEventListener('click', () => {
-//     console.log('Button clicked');
-//     if (timerID){
-//         clearInterval(timerID);
-//         timerID = null;
-//     } else {
-//         createTetromino();
-//         timerID = setInterval(moveDown, 1000);
-//         randomNextTetromino = Math.floor(Math.random() * tetrominoObjects.length);
-//         showTetromino();
+startPauseBtn.addEventListener('click', () => {
+    console.log('Button clicked');
+    if (isPaused){
+        startPauseBtn.textContent = "Resume"
+        clearInterval(isPaused);
+        isPaused = null;
+    } else {
+        startPauseBtn.textContent = "Pause"
+        createTetromino();
+        isPaused = setInterval(moveDown, 1000);
+        randomNextTetromino = Math.floor(Math.random() * tetrominoObjects.length);
+        showTetromino();
+    }
+});
+
+// function showScore(){
+//     for (let i=0; 1<199; i += width){
+//         const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
+
+//         if(row.every(index => squares[index].classList.contains("taken"))) {
+//             userScore += 10
+//             displayScore.innerHTML = userScore
+//             row.forEach(index => {squares[index].classList.remove('taken')
+//         })
+//             const removeSquares = squares.splice(i, width)
+//             squares = removeSquares.concat(squares)
+//             console.log(squares)
+//         }
 //     }
-// });
+// }
 
-// startPauseBtn.addEventListener('click', () => {
-//     if (timerId) {
-//       clearInterval(timerId)
-//       timerId = null
-//     } else {
-//       draw()
-//       timerId = setInterval(moveDown, 1000)
-//       nextRandom = Math.floor(Math.random()*theTetrominoes.length)
-//       displayShape()
-//     }
-//   })
+function showScore() {
+    for (let i = 0; i < 199; i +=width) {
+      const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
 
-
-
-
-
-
+      if(row.every(index => squares[index].classList.contains('taken'))) {
+        userScore +=10
+        displayScore.innerHTML = userScore
+        row.forEach(index => {
+          squares[index].classList.remove('taken')
+        })
+        const squaresRemoved = squares.splice(i, width)
+        squares = squaresRemoved.concat(squares)
+        console.log(squares)
+      }
+    }
+  }
 
 
 
