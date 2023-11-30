@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded',() => {
     let timerID
     let isPaused = false; // Track the game's paused state
     let userScore = 0
+    const colors = [
+        'orange',
+        'green',
+        'blue',
+        'yellow',
+        'purple',
+    ]
     
 
 //Building the tetromino shapes
@@ -62,6 +69,7 @@ let randomTetromino = Math.floor(Math.random()*tetrominoObjects.length)
 function createTetromino() {
     current.forEach(index => {
         squares[currentPosition + index].classList.add('tetrominos')
+        squares[currentPosition + index].style.backgroundColor = colors[randomTetromino]
     })
 }
 
@@ -71,6 +79,7 @@ createTetromino()
 function removeTetromino() {
     current.forEach(index => {
         squares[currentPosition + index].classList.remove('tetrominos')
+        squares[currentPosition + index].style.backgroundColor = ""
     })
 }
 
@@ -132,6 +141,7 @@ function freeze(){
         createTetromino()
         showTetromino()
         showScore()
+        gameOver()
     }
 }
 
@@ -190,9 +200,11 @@ function moveTetrominoRight() {
 function showTetromino() {
     displaySquares.forEach(square => {
         square.classList.remove('tetrominos');
+        square.style.backgroundColor = ""
     });
     nextTetromino[randomNextTetromino].forEach(index => {
-        displaySquares[index].classList.add('tetrominos');
+        displaySquares[displayIndex + index].classList.add('tetrominos');
+        displaySquares[displayIndex + index].style.backgroundColor = colors[randomNextTetromino]
     });
 }
 
@@ -250,15 +262,22 @@ function showScore() {
         displayScore.innerHTML = userScore
         row.forEach(index => {
           squares[index].classList.remove('taken')
+          squares[index].classList.remove('tetrominos')
+          squares[index].style.backgroundColor = ''
         })
         const squaresRemoved = squares.splice(i, width)
         squares = squaresRemoved.concat(squares)
-        console.log(squares)
+        squares.forEach(cell => gameboard.appendChild(cell))
       }
     }
   }
 
-
+function gameOver() {
+    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
+        displayScore.innerHTML = 'end'
+        clearInterval(isPaused)
+    }
+}
 
 } );
 
