@@ -15,6 +15,15 @@ document.addEventListener('DOMContentLoaded',() => {
         'yellow',
         'purple',
     ]
+    const freezeBtn = document.getElementById('freeze')
+    const slowMoBtn = document.getElementById('slow-mo')
+    const zeroGravityBtn = document.getElementById('zero-gravity')
+    const twistsButtons = [freezeBtn, slowMoBtn, zeroGravityBtn]
+    clickedBtn = null
+    clickedTime = 0;
+    timer = 0;
+    let slowMoActive = false
+    const slowMoDuration = 30;
     
 
 //Building the tetromino shapes
@@ -110,17 +119,21 @@ document.addEventListener('keydown', (e) => {
         e.preventDefault(); // Prevent default action for arrow keys
     }
 
-    if (e.key === 'ArrowLeft') {
-        moveTetrominoLeft();
-    } else if (e.key === 'ArrowRight') {
-        moveTetrominoRight();
-    } else if (e.key === 'ArrowDown') {
-        moveDown();
+    if(isPaused){
+        if ( e.key === 'ArrowLeft') {
+            moveTetrominoLeft();
+        } else if (e.key === 'ArrowRight') {
+            moveTetrominoRight();
+        } else if (e.key === 'ArrowDown') {
+            moveDown();
+        } else if (e.key === 'ArrowUp') {
+            rotateTetromino();
+        } else if (e.key === 'h' || e.key === 'H') {
+            holdTetromino(); 
+        }
     } else if (e.key === 'ArrowUp') {
         rotateTetromino();
-    } else if (e.key === 'h' || e.key === 'H') {
-        holdTetromino(); 
-    }
+    } 
 });
 
 //Function to make tetrominos move down
@@ -289,7 +302,6 @@ function showHoldTetromino() {
     // });
 
 startPauseBtn.addEventListener('click', () => {
-    console.log('Button clicked');
     if (isPaused){
         startPauseBtn.textContent = "Resume"
         clearInterval(isPaused);
@@ -303,21 +315,134 @@ startPauseBtn.addEventListener('click', () => {
     }
 });
 
-// function showScore(){
-//     for (let i=0; 1<199; i += width){
-//         const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
+startPauseBtn.addEventListener('click', () =>{
+    startPauseBtn.classList.toggle('move-button')
+})
 
-//         if(row.every(index => squares[index].classList.contains("taken"))) {
-//             userScore += 10
-//             displayScore.innerHTML = userScore
-//             row.forEach(index => {squares[index].classList.remove('taken')
-//         })
-//             const removeSquares = squares.splice(i, width)
-//             squares = removeSquares.concat(squares)
-//             console.log(squares)
-//         }
-//     }
-// }
+
+
+
+
+
+
+
+
+// function startTimer(durationInSeconds) {
+//     let timerDisplay = document.getElementById('timer');
+//     let timeLeft = durationInSeconds;
+  
+//     // Update the timer every second
+//     timer = setInterval(() => {
+//       const minutes = Math.floor(timeLeft / 60);
+//       const seconds = timeLeft % 60;
+  
+//       timerDisplay.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      
+//       if (timeLeft === 0) {
+//         clearInterval(timer); // Stop the timer when time runs out
+//       } else {
+//         timeLeft--;
+//       }
+//     }, 1000);
+//   }
+
+
+
+
+function twistsTimer(twistsButton){
+    currentTime = new Date().getTime();
+    if (currentTime - clickedTime > 3000 ||clickedBtn !== twistsButton){
+        twistsButton.disabled = false;
+
+        clickedBtn = twistsButton;
+        clickedTime = currentTime;
+
+        setTimeout(() => {
+            twistsButton.disabled = true;
+        }, 3000)
+    } else {
+        alert('Wait 30 seconds')
+    }
+}
+
+twistsButtons.forEach(twistsButton =>{
+    twistsButton.addEventListener('click', () => twistsTimer(twistsButton));
+})
+
+freezeBtn.addEventListener('click', () => {
+    handleTwists('freeze')
+    //When freeze function is in play
+    if (isPaused){
+        clearInterval(isPaused);
+        isPaused = null;
+
+
+    } else {
+        freezeBtn.textContent = "FREEZE"
+        createTetromino();
+        isPaused = setInterval(moveDown, 1000);
+        randomNextTetromino = Math.floor(Math.random() * tetrominoObjects.length);
+        showTetromino();
+    }
+    setTimeout(() => {
+        isPaused = false; 
+        isPaused = setInterval(moveDown, 1000); 
+    }, 10000);
+});
+
+zeroGravityBtn.addEventListener('click', ()=> {
+    handleTwists('zero-gravity')
+    if (isPaused){
+        clearInterval(isPaused);
+        isPaused = true;
+    } else {
+        freezeBtn.textContent = "FREEZE"
+        createTetromino();
+        isPaused = setInterval(moveDown, 1000);
+        randomNextTetromino = Math.floor(Math.random() * tetrominoObjects.length);
+        showTetromino();
+    }
+    setTimeout(() => {
+        isPaused = false; 
+        isPaused = setInterval(moveDown, 1000); 
+    }, 10000);
+});
+
+
+slowMoBtn.addEventListener('click', () => {
+    handleTwists('slowmo')
+    if(!slowMoActive){
+        slowMoActive = true;
+        handleSlowMo(slowMoDuration);
+        slowMoBtn.disabled = true
+    }
+})
+
+function handleSlowMo(durationInSeconds){
+    let originalInterval;
+    let slowMoInterval; 
+
+    if (slowMoActive) {
+        originalInterval = 1000; 
+        slowMoInterval = 2000; 
+        clearInterval(isPaused);
+        isPaused = setInterval(moveDown, slowMoInterval);
+}
+setTimeout(() => {
+    clearInterval(isPaused); 
+    isPaused = setInterval(moveDown, originalInterval); 
+    slowMoActive = false; 
+}, 10000); 
+
+}
+
+
+
+function handleTwists(twist){
+    if (twist === 'freeze'){
+    } else if( twist === 'slow-mo'){
+    } else if(twist === 'zero-gravity'){}
+}
 
 function showScore() {
     for (let i = 0; i < 199; i +=width) {
@@ -325,7 +450,7 @@ function showScore() {
 
       if(row.every(index => squares[index].classList.contains('taken'))) {
         userScore +=10
-        displayScore.innerHTML = userScore
+        displayScore.innerHTML = "Score: " + userScore
         row.forEach(index => {
           squares[index].classList.remove('taken')
           squares[index].classList.remove('tetrominos')
@@ -340,8 +465,9 @@ function showScore() {
 
 function gameOver() {
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
-        displayScore.innerHTML = 'end'
+        displayScore.innerHTML = 'Game Over!'
         clearInterval(isPaused)
+        isPaused = false
     }
 }
 

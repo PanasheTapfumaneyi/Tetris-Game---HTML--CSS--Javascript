@@ -14,6 +14,8 @@
   
   /* Score bar to display the current score for the user */
   .score-bar {
+    padding-top: 20px;
+    font-size: 25px;
     position: absolute;
     text-align: center;
     right: 10px;
@@ -138,7 +140,7 @@
     width: 150px;
     display: flex;
     flex-wrap: wrap;
-    background-color: yellowgreen;
+    background-color: black;
   }
 
   .next-grid div{
@@ -146,9 +148,28 @@
     width: 30px;    
   }
 
-  .start-pause-button{
-    color: aqua;
+  /* .start-button{
+    position: absolute;
+    left: 100px;
+    
+  } */
+
+  #start-pause-button{
+    position: absolute;
+    left: 450px;
+    top: 400px;
+    color: black;
+    height: 40px;
+    width: 100px;
+    z-index: 9;
   }
+
+.move-button{
+  transform: translateY(-200px);
+  transform: translateX(200px);
+}
+
+
 
   .hold-grid{
     position: absolute;
@@ -157,10 +178,55 @@
     width: 150px;
     display: flex;
     flex-wrap: wrap;
-    background-color: yellowgreen;
+    background-color: black;
   }
 
   .hold-grid div{
     height: 30px;
     width: 30px; 
+  }
+
+  #freeze{
+    position: absolute;
+    top: 35px;
+    z-index: 9;
+    background-color: #000;
+    color: white;
+    font-size: 25px;
+    height: 50px;
+    width: 150px;
+  }
+
+  #freeze[disabled]{
+    background-color: grey;
+  }
+  
+  #slow-mo{
+    position: relative;
+    top: 65px;
+    z-index: 9;
+    background-color: #000;
+    color: white;
+    font-size: 25px;
+    height: 50px;
+    width: 150px;
+  }
+
+  #slow-mo[disabled]{
+    background-color: grey;
+  }
+
+  #zero-gravity{
+    position: relative;
+    top: 75px;
+    z-index: 9;
+    background-color: #000;
+    color: white;
+    font-size: 25px;
+    height: 50px;
+    width: 150px;
+  }
+
+  #zero-gravity[disabled]{
+    background-color: grey;
   }
