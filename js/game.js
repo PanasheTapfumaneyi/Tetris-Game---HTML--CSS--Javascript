@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded',() => {
     const displayScore = document.getElementById('score')
     const startPauseBtn = document.querySelector('#start-pause-button')
     let randomNextTetromino = 0
-    let timerID
+    let heldTetromino = 0
     let isPaused = false; // Track the game's paused state
     let userScore = 0
     const colors = [
@@ -106,7 +106,7 @@ function removeTetromino() {
 // document.addEventListener('keyup', control)
 
 document.addEventListener('keydown', (e) => {
-    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'h'].includes(e.key)) {
         e.preventDefault(); // Prevent default action for arrow keys
     }
 
@@ -118,6 +118,8 @@ document.addEventListener('keydown', (e) => {
         moveDown();
     } else if (e.key === 'ArrowUp') {
         rotateTetromino();
+    } else if (e.key === 'h' || e.key === 'H') {
+        holdTetromino(); 
     }
 });
 
@@ -189,11 +191,12 @@ function moveTetrominoRight() {
  //Displaying tetrominos
 
  const nextTetromino = [
-    [2,3,7,12], //lTetromino
-    [6,7,12,13], //zTetromino
+    [7,12,17, 8], //lTetromino
+    [6,7,8,11,12,13,16,17,18], //oTetromino
     [10,11,12,13], //iTetromino
     [7,11,12,13], //tTetromino
-    [7,8,12,13], //oTetromino
+    [6,7,12,13], //zTetromino
+
  ]
 
 // Function to display the next tetromino
@@ -207,6 +210,69 @@ function showTetromino() {
         displaySquares[displayIndex + index].style.backgroundColor = colors[randomNextTetromino]
     });
 }
+
+// function showHoldTetromino(){
+//     displaySquares.forEach(square => {
+//         square.classList.remove('tetrominos');
+//         square.style.backgroundColor = ""});
+//         nextTetromino[heldTetromino].forEach(index => {
+//             displaySquares[displayIndex + index].classList.add('tetrominos');
+//             displaySquares[displayIndex + index].style.backgroundColor = colors[randomNextTetromino]
+//         });
+// }
+
+function showHoldTetromino() {
+    const holdGrid = document.getElementById('holdGrid');
+    holdGrid.innerHTML = ''; // Clear the hold grid
+  
+    if (heldTetromino !== null) {
+        // Display the held tetromino squares
+        tetrominoObjects[randomTetromino].forEach(index => {
+            const square = document.createElement('div');
+            square.classList.add('tetrominos');
+            square.style.backgroundColor = colors[heldTetromino];
+            holdGrid.appendChild(square);
+        });
+    }
+}
+
+  // Function to hold the tetromino
+  function holdTetromino() {
+    // Remove the current tetromino from the game board
+    removeTetromino();
+
+    if (heldTetromino === null) {
+        heldTetromino = randomTetromino;
+        randomTetromino = randomNextTetromino;
+        randomNextTetromino = Math.floor(Math.random() * tetrominoObjects.length);
+        current = tetrominoObjects[randomTetromino][currentRotation];
+        currentPosition = 4;
+        showTetromino();
+        showHoldTetromino(); // Display the held tetromino
+    } else {
+        const temp = randomTetromino;
+        randomTetromino = heldTetromino;
+        heldTetromino = temp;
+        current = tetrominoObjects[randomTetromino][currentRotation];
+        currentPosition = 4;
+        showTetromino();
+        showHoldTetromino(); // Display the held tetromino
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Start/Pause button
 

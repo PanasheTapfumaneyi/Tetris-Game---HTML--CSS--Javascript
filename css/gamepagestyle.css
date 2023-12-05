@@ -30,7 +30,7 @@
     left: 10px;
     right: 10px;
     color: rgb(0, 0, 0);
-    height: 150px;
+    height: 200px;
     width: 200px;
     top: 130px;
     text-align: center;
@@ -42,11 +42,11 @@
   /* Bar to display the currently active twists */
   .twists-bar {
     position: absolute;
-    top: 300px;
+    top: 340px;
     left: 10px;
     right: 10px;
     color: rgb(0, 0, 0);
-    height: 330px;
+    height: 270px;
     width: 200px;
     background: #ffffff;
     border-radius: 15px;
@@ -148,4 +148,19 @@
 
   .start-pause-button{
     color: aqua;
+  }
+
+  .hold-grid{
+    position: absolute;
+    left: 28px;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: yellowgreen;
+  }
+
+  .hold-grid div{
+    height: 30px;
+    width: 30px; 
   }
