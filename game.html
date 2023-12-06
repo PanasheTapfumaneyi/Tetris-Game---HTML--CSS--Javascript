@@ -62,6 +62,8 @@
           </nav>
         </header>
       </div>
+      <audio  id="music" src="assets/music/Tetris Theme.mp3"></audio>
+      <audio id="game-over" src="assets/music/Game over.mp3"></audio>
       <div class="gameborder">
         <div class="score-bar">
           <h2><span id="score">0</span>
@@ -383,6 +385,8 @@
       drawerBtn.addEventListener('click', () => {
         drawerContent.classList.toggle('show-menu');
       });
+
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   </body>
 </html>

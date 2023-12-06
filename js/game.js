@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded',() => {
     let heldTetromino = 0
     let isPaused = false; // Track the game's paused state
     let userScore = 0
+    let speedIncrease = 1000
+    let myMusic = document.querySelector('#music')
+    let gameOverSound = document.querySelector('#game-over')
     const colors = [
         'orange',
         'green',
@@ -303,21 +306,24 @@ function showHoldTetromino() {
 
 startPauseBtn.addEventListener('click', () => {
     if (isPaused){
+        myMusic.pause()
         startPauseBtn.textContent = "Resume"
         clearInterval(isPaused);
         isPaused = null;
     } else {
+        myMusic.play()
         startPauseBtn.textContent = "Pause"
         createTetromino();
         isPaused = setInterval(moveDown, 1000);
         randomNextTetromino = Math.floor(Math.random() * tetrominoObjects.length);
         showTetromino();
     }
+    startPauseBtn.classList.toggle('move-button')
 });
 
-startPauseBtn.addEventListener('click', () =>{
-    startPauseBtn.classList.toggle('move-button')
-})
+// startPauseBtn.addEventListener('click', () =>{
+//     startPauseBtn.classList.toggle('move-button')
+// })
 
 
 
@@ -436,13 +442,18 @@ setTimeout(() => {
 
 }
 
-
-
 function handleTwists(twist){
     if (twist === 'freeze'){
     } else if( twist === 'slow-mo'){
     } else if(twist === 'zero-gravity'){}
 }
+
+// function gameSpeedIncrease(){
+//     let initialInterval = 1000
+//     speedIncreaseInterval -= 500
+//     clearInterval(isPaused)
+//     isPaused = setInterval(moveDown, speedIncreaseInterval)
+// }
 
 function showScore() {
     for (let i = 0; i < 199; i +=width) {
@@ -450,7 +461,11 @@ function showScore() {
 
       if(row.every(index => squares[index].classList.contains('taken'))) {
         userScore +=10
+        speedIncrease -= 100 
+        clearInterval(isPaused)
+        isPaused = setInterval(moveDown, speedIncrease)
         displayScore.innerHTML = "Score: " + userScore
+        confetti({particleCount: 100, spread: 40, origin: {y: 1}})
         row.forEach(index => {
           squares[index].classList.remove('taken')
           squares[index].classList.remove('tetrominos')
@@ -465,11 +480,15 @@ function showScore() {
 
 function gameOver() {
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
+        gameOverSound.play()
+        myMusic.pause()
         displayScore.innerHTML = 'Game Over!'
         clearInterval(isPaused)
         isPaused = false
     }
 }
+
+
 
 } );
 
