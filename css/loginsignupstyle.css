@@ -243,8 +243,8 @@ body {
 
 p {
   color: red;
-  font-size: 11px;
-  -webkit-text-stroke-width: 0.3px;
+  font-size: 17px;
+  -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
 }
 

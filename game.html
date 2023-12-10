@@ -32,18 +32,15 @@
                       </a>
                     </li>
                     <li>
-                      <a href="#">
-                        <p id="twists-names">Regular-Infinite</p>
+                        <button id="regular-button">Regular-Infinite</button>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
-                        <p id="twists-names">Speed Run</p>
+                        <button id="speed-run-button">Speed Run</button>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
-                        <p id="twists-names">Puzzle</p>
+                        <button id="puzzle-button">Puzzle</button>
                       </a>
                     </li>
                   </ul>
@@ -64,6 +61,8 @@
       </div>
       <audio  id="music" src="assets/music/Tetris Theme.mp3"></audio>
       <audio id="game-over" src="assets/music/Game over.mp3"></audio>
+      <audio id="ground-hit" src="assets/music/TetrominoGroundHit.mp3"></audio>
+      <audio id="tetris-line" src="assets/music/TetrisLine.mp3"></audio>
       <div class="gameborder">
         <div class="score-bar">
           <h2><span id="score">0</span>
@@ -71,6 +70,7 @@
         </div>
         <section id="resume-button-section"></section>
         <button id="start-pause-button">Start</button>
+        <button id="theme-button">Theme</button>
         <div class="hold-bar">
           <h2>HOLD</h2>
           <div class="hold-grid" id="holdGrid">
@@ -102,7 +102,7 @@
           </div>
         </div>
         <div class="game-screen">
-          <h2>GAME</h2>
+          <h2 span id="game-mode">GAME (Regular)</h2>
           <div class="game-board">
             <div></div>
             <div></div>

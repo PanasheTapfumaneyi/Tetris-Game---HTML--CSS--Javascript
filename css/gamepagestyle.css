@@ -135,6 +135,37 @@
     border: 0.5px solid black;
   }
 
+  .circle-theme{
+    border-radius:10px ;
+  }
+
+  .batman-theme{
+    border-left: 2.5px solid transparent;
+    border-right: 2.5px solid transparent;
+    border-top: 8.0px solid black;
+  }
+
+  .square-shape{
+    border-radius: 2px;
+  }
+
+  @keyframes tetromino-shine{
+    0%{
+      opacity: 0.2;
+    }
+    50%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0.2;
+    }
+  }
+
+  .tetromino-shine-animation{
+    animation: tetromino-shine 0.5s ease-in-out;
+  }
+
+
   .next-grid{
     position: absolute;
     left: 28px;
@@ -155,6 +186,15 @@
     left: 100px;
     
   } */
+
+  #theme-button{
+    position:absolute;
+    top: 500px;
+    left: 650px;
+    z-index: 9;
+    height: 40px;
+    width: 100px;
+  }
 
   #start-pause-button{
     position: absolute;

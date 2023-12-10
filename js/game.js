@@ -3,14 +3,22 @@ document.addEventListener('DOMContentLoaded',() => {
     let squares = Array.from(document.querySelectorAll('.game-board div'))
     const width = 10
     const displayScore = document.getElementById('score')
+    const displayMode = document.getElementById('game-mode')
     const startPauseBtn = document.querySelector('#start-pause-button')
     let randomNextTetromino = 0
     let heldTetromino = 0
     let isPaused = false; // Track the game's paused state
+    let isGameOver = false
+    let speedRunActive = false
+    let regularModeActive = true
+    let puzzleModeActive = false
     let userScore = 0
     let speedIncrease = 1000
     let myMusic = document.querySelector('#music')
     let gameOverSound = document.querySelector('#game-over')
+    let tetrominoGroundSound = document.querySelector('#ground-hit')
+    let tetrisLine = document.querySelector('#tetris-line')
+    let setSpeed = 1000
     const colors = [
         'orange',
         'green',
@@ -18,10 +26,17 @@ document.addEventListener('DOMContentLoaded',() => {
         'yellow',
         'purple',
     ]
+    const themeButton = document.getElementById('theme-button')
+    let originalTheme = true
+    let circleTheme = false
+    let starTheme = false
     const freezeBtn = document.getElementById('freeze')
     const slowMoBtn = document.getElementById('slow-mo')
     const zeroGravityBtn = document.getElementById('zero-gravity')
     const twistsButtons = [freezeBtn, slowMoBtn, zeroGravityBtn]
+    const regularModeBtn = document.getElementById('regular-button')
+    const speedRunBtn = document.getElementById('speed-run-button')
+    const puzzleBtn = document.getElementById('puzzle-button')
     clickedBtn = null
     clickedTime = 0;
     timer = 0;
@@ -95,28 +110,6 @@ function removeTetromino() {
     })
 }
 
-// Listening for key presses 
-// function control(e){
-//     if(e.keyCode === 37){
-//         e.preventDefault()
-//         moveTetrominoLeft()
-//     }
-//     else if(e.keyCode === 39){
-//         e.preventDefault()
-//         moveTetrominoRight()
-//     }
-//     else if(e.keyCode === 40){
-//         e.preventDefault()
-//         moveDown()
-//     }
-//     else if(e.keyCode === 38){
-//         e.preventDefault()
-//         rotateTetromino()
-//     }
-// }
-
-// document.addEventListener('keyup', control)
-
 document.addEventListener('keydown', (e) => {
     if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'h'].includes(e.key)) {
         e.preventDefault(); // Prevent default action for arrow keys
@@ -150,7 +143,8 @@ function moveDown() {
 
 function freeze(){
     if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
-        current.forEach(index => squares[currentPosition + index].classList.add('taken'))
+        current.forEach(index => squares[currentPosition + index].classList.add('taken', 'tetromino-shine-animation'))
+        tetrominoGroundSound.play()
         //Spawn new tetromino
         randomTetromino = randomNextTetromino
         randomNextTetromino = Math.floor(Math.random() * tetrominoObjects.length)
@@ -162,6 +156,9 @@ function freeze(){
         gameOver()
     }
 }
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//Make this into one function 
+
 
 //Move tetromino left until it hits the wall
 function moveTetrominoLeft() {
@@ -185,7 +182,7 @@ function moveTetrominoRight() {
     }
     createTetromino()
   }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------
  //Rotate tetromino
 
  function rotateTetromino(){
@@ -278,52 +275,68 @@ function showHoldTetromino() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//Start/Pause button
-
-    // startPauseBtn.addEventListener('click', () => {
-    //     if (gamePaused) {
-    //         timerID = setInterval(moveDown, 1000);
-    //         startPauseBtn.textContent = 'Pause';
-    //         gamePaused = false; 
-    //     } else {
-    //         clearInterval(timerID);
-    //         startPauseBtn.textContent = 'Resume'; 
-    //         gamePaused = true; 
-    //     }
-    // });
-
 startPauseBtn.addEventListener('click', () => {
-    if (isPaused){
+ if(isGameOver === true) {
+     restartGame()
+ } else{
+  if (isPaused){
         myMusic.pause()
         startPauseBtn.textContent = "Resume"
         clearInterval(isPaused);
         isPaused = null;
-    } else {
+    } else if (!isPaused){
         myMusic.play()
         startPauseBtn.textContent = "Pause"
         createTetromino();
         isPaused = setInterval(moveDown, 1000);
         randomNextTetromino = Math.floor(Math.random() * tetrominoObjects.length);
         showTetromino();
+    } else if (!isPaused && isGameOver === true){
+            startPauseBtn.textContent = "Pause"
     }
+
+ }
+
     startPauseBtn.classList.toggle('move-button')
 });
 
-// startPauseBtn.addEventListener('click', () =>{
-//     startPauseBtn.classList.toggle('move-button')
-// })
+
+function handleGameModes(mode){
+    if (mode === 'regular'){
+    } else if( mode === 'speed-run'){
+    } else if(mode === 'puzzle'){}
+}
+
+function handleRegularMode(){
+    regularModeActive = true
+    displayMode.innerHTML = 'Game (Regular Mode)'
+}
+regularModeBtn.addEventListener('click', () => {
+    handleGameModes('regular')
+    if(!regularModeActive){
+        regularModeActive = true;
+        handleRegularMode();
+        regularModeBtn.disabled = true
+        speedRunBtn.disabled = false
+        speedRunActive = false
+    }
+})
+
+
+speedRunBtn.addEventListener('click', () => {
+    handleGameModes('speed-run')
+    if(!speedRunActive){
+        speedRunActive = true;
+        handleSpeedRunMode();
+        speedRunBtn.disabled = true
+        regularModeBtn.disabled = false
+    }
+})
+function handleSpeedRunMode(){
+    regularModeActive = false
+    speedRunActive = true
+    displayMode.innerHTML = 'Game (SPEED RUN!)'
+}
 
 
 
@@ -333,24 +346,21 @@ startPauseBtn.addEventListener('click', () => {
 
 
 
-// function startTimer(durationInSeconds) {
-//     let timerDisplay = document.getElementById('timer');
-//     let timeLeft = durationInSeconds;
-  
-//     // Update the timer every second
-//     timer = setInterval(() => {
-//       const minutes = Math.floor(timeLeft / 60);
-//       const seconds = timeLeft % 60;
-  
-//       timerDisplay.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-      
-//       if (timeLeft === 0) {
-//         clearInterval(timer); // Stop the timer when time runs out
-//       } else {
-//         timeLeft--;
-//       }
-//     }, 1000);
-//   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -448,24 +458,34 @@ function handleTwists(twist){
     } else if(twist === 'zero-gravity'){}
 }
 
-// function gameSpeedIncrease(){
-//     let initialInterval = 1000
-//     speedIncreaseInterval -= 500
-//     clearInterval(isPaused)
-//     isPaused = setInterval(moveDown, speedIncreaseInterval)
-// }
+function restartGame(){
+    location.reload();
+}
+
 
 function showScore() {
     for (let i = 0; i < 199; i +=width) {
       const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
 
       if(row.every(index => squares[index].classList.contains('taken'))) {
-        userScore +=10
-        speedIncrease -= 100 
+
+        if(speedRunActive){
+            speedIncrease -= 100
+            userScore +=20
+        } else if(regularModeActive) {
+            speedIncrease = 1000
+            userScore +=10
+        } else if (puzzleModeActive){
+            speedIncrease = 100
+        }
+        if (speedIncrease < 100){
+            speedIncrease = 100
+        }
         clearInterval(isPaused)
         isPaused = setInterval(moveDown, speedIncrease)
         displayScore.innerHTML = "Score: " + userScore
         confetti({particleCount: 100, spread: 40, origin: {y: 1}})
+        tetrisLine.play()
         row.forEach(index => {
           squares[index].classList.remove('taken')
           squares[index].classList.remove('tetrominos')
@@ -478,15 +498,45 @@ function showScore() {
     }
   }
 
+
+
+
 function gameOver() {
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
         gameOverSound.play()
         myMusic.pause()
+        isGameOver = true
         displayScore.innerHTML = 'Game Over!'
+        startPauseBtn.textContent = 'Restart'
         clearInterval(isPaused)
         isPaused = false
+
     }
 }
+
+themeButton.addEventListener('click', () => {
+    const gameBoardCells = document.querySelectorAll('.game-board div');
+
+    if (originalTheme === true) {
+        gameBoardCells.forEach(square => square.classList.remove('square-theme', 'batman-theme'));
+        gameBoardCells.forEach(square => square.classList.add('circle-theme'));
+        originalTheme = false;
+        starTheme = false;
+        circleTheme = true;
+    } else if (circleTheme === true) {
+        gameBoardCells.forEach(square => square.classList.remove('circle-theme', 'square-theme'));
+        gameBoardCells.forEach(square => square.classList.add('batman-theme'));
+        originalTheme = false;
+        starTheme = true;
+        circleTheme = false;
+    } else if (starTheme === true) {
+        gameBoardCells.forEach(square => square.classList.remove('circle-theme', 'batman-theme'));
+        gameBoardCells.forEach(square => square.classList.add('square-theme'));
+        originalTheme = true;
+        starTheme = false;
+        circleTheme = false;
+    }
+});
 
 
 
