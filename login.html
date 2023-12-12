@@ -2,13 +2,23 @@
 <html>
   <head>
     <title>Login Page</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/loginsignupstyle.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/login.js" defer type="module"></script>
+    <link rel="stylesheet" href="css/loginsignupstyle.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <div class="announcement-container">
@@ -35,41 +45,41 @@
         </header>
         <div class="box">
           <span class="borderLine"></span>
-           <div id="loginPara">
+          <div id="loginPara">
             <!-- Login form -->
-          <form>
-            <h2>LOG IN</h2>
-            <!-- Username/Email input box -->
-            <div class="inputBox">
-              <input type="text" required="required" id="usernameInput">
-              <span>Username</span>
-              <i></i>
-            </div>
-            <!-- Password input box-->
-            <div class="inputBox">
-              <input type="password" required="required" id="passwordInput">
-              <span>Password</span>
-              <i></i>
-            </div>
-            <!-- Checkbox to reveal password -->
-            <div class="inputbox">
-              <input type="checkbox" onclick="togglePassword()">
-              <span><h7 id ='showPassword'>Show Password</h7></span>
-              <i></i>
-            </div>            
-            <!-- Forgot password link and sign up link -->
-            <div class="links">
-              <a href="#">Forgot Password</a>
-              <a href="signup.html">Signup</a>
-            </div>
-            <p id="loginFailure"></p>
-            <!-- Submit button -->
-            <button class="submit" onclick="return login(event)">
-              LOG IN
-              <!-- <a href="homepage.html">PLAY</a> -->
-            </button>
-          </form>
-           </div>
+            <form id="login-form" name="login-form">
+              <h2>LOG IN</h2>
+              <!-- Username/Email input box -->
+              <div class="inputBox">
+                <input type="text" required="required" id="usernameInput" />
+                <span>Username</span>
+                <i></i>
+              </div>
+              <!-- Password input box-->
+              <div class="inputBox">
+                <input type="password" required="required" id="passwordInput" />
+                <span>Password</span>
+                <i></i>
+              </div>
+              <!-- Checkbox to reveal password -->
+              <div class="inputbox">
+                <input type="checkbox" onclick="togglePassword()" />
+                <span><h7 id="showPassword">Show Password</h7></span>
+                <i></i>
+              </div>
+              <!-- Forgot password link and sign up link -->
+              <div class="links">
+                <a href="#">Forgot Password</a>
+                <a href="signup.html">Signup</a>
+              </div>
+              <p id="loginFailure"></p>
+              <!-- Submit button -->
+              <button class="submit">
+                LOG IN
+                <!-- <a href="homepage.html">PLAY</a> -->
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
@@ -78,7 +88,7 @@
         <h3>SPONSORS</h3>
         <div class="sponsor-container">
           <img class="sponsor-logo" src="images/amdlogo.png" alt="" />
-          <img class="sponsor-logo" src="images/m&m.png" alt="M&M Logo">
+          <img class="sponsor-logo" src="images/m&m.png" alt="M&M Logo" />
           <img class="sponsor-logo" src="images/nikelogo.png" alt="" />
         </div>
         <div class="sponsor-1"></div>
@@ -88,7 +98,7 @@
       <div class="col-2">
         <h3>NEWSLETTER</h3>
         <form>
-          <input type="email" placeholder="Enter Your Email">
+          <input type="email" placeholder="Enter Your Email" />
           <button type="submit">SUBSCRIBE</button>
         </form>
       </div>
@@ -96,9 +106,8 @@
         <h3>CONTACT US</h3>
         <p>Call: +230 5954 9875</p>
         <p>Email: CT820@live.mdx.ac.uk</p>
-        <p>Address: Coastal Road, 90203, Uniciti, Mauritius </p>
+        <p>Address: Coastal Road, 90203, Uniciti, Mauritius</p>
       </div>
     </section>
-    <script src="js/login.js"></script>
   </body>
 </html>

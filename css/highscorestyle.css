@@ -1,16 +1,14 @@
-
 /* reset defult styling and set font to Bangers */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Bangers", cursive;
+  font-family: 'Bangers', cursive;
 }
-
 
 body {
   overflow-x: hidden;
-  background-image: url("../images/backgroundimagetwo.png");
+  background-image: url('../images/backgroundimagetwo.png');
   background-position: top;
   background-size: 90%;
 }
@@ -29,7 +27,7 @@ a {
 
 /* Styling for table */
 table {
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
   font-size: 14px;
   border-radius: 10px;
   text-align: center;
@@ -40,12 +38,12 @@ caption {
   color: white;
   margin-bottom: 7px;
   font-size: 32px;
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Table headers styling */
 th {
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
   background: rgba(0, 0, 0, 0.9);
   padding: 10px 17px;
   color: rgb(0, 255, 38);
@@ -53,11 +51,10 @@ th {
 /* Table data styling */
 th,
 td {
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
   border-color: rgba(0, 0, 0, 0.1);
   border-width: 0 1px 1px 0;
   border-style: solid;
-
 }
 /* Styling for first and last child of table */
 th:first-child {
@@ -86,7 +83,8 @@ td {
 .second td {
   color: rgb(254, 0, 0);
 }
-.third td {
+.third,
+td:nth-child(odd) {
   color: rgb(254, 178, 0);
 }
 
@@ -99,7 +97,8 @@ td {
 .sixth td {
   color: rgb(250, 254, 0);
 }
-.seventh td {
+.seventh,
+td:nth-child(even) {
   color: rgb(4, 254, 0);
 }
 .eighth td {
