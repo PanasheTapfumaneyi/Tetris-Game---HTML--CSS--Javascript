@@ -272,3 +272,9 @@
   #zero-gravity[disabled]{
     background-color: grey;
   }
+
+  .Ranking{
+    position: absolute;
+    bottom: 1000px;
+    z-index: 999;
+  }

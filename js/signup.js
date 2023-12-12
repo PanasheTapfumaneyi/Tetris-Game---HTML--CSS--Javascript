@@ -46,6 +46,7 @@ function storeUser() {
 	var email = document.getElementById("email").value;
 	var gender = document.getElementById("gender").value;
 	var country = document.getElementById("country").value;
+	var highScore = ""
 
 	// Check if the username already exists in localStorage
 	if (localStorage.getItem(username)) {
@@ -59,7 +60,8 @@ function storeUser() {
 		password: password,
 		email: email,
 		gender: gender,
-		country: country
+		country: country,
+		highScore: highScore
 	};
 
 	localStorage.setItem(username, JSON.stringify(usrObject));
@@ -69,6 +71,6 @@ function storeUser() {
 
 
   //Change to next window if validation is successful
-	window.location.href = "homepage.html"; 
+	window.location.href = "login.html"; 
 	return true;
 }

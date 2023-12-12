@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded',() => {
     const regularModeBtn = document.getElementById('regular-button')
     const speedRunBtn = document.getElementById('speed-run-button')
     const puzzleBtn = document.getElementById('puzzle-button')
+    const updateScore = document.getElementById('update-score')
     clickedBtn = null
     clickedTime = 0;
     timer = 0;
@@ -485,6 +486,7 @@ function showScore() {
         isPaused = setInterval(moveDown, speedIncrease)
         displayScore.innerHTML = "Score: " + userScore
         confetti({particleCount: 100, spread: 40, origin: {y: 1}})
+        scoreBoard()
         tetrisLine.play()
         row.forEach(index => {
           squares[index].classList.remove('taken')
@@ -497,6 +499,7 @@ function showScore() {
       }
     }
   }
+
 
 
 
@@ -537,6 +540,46 @@ themeButton.addEventListener('click', () => {
         circleTheme = false;
     }
 });
+
+function scoreBoard(){
+    let currentScore = userScore.toString()
+
+    if(sessionStorage.loggedInUsr !== undefined){   
+        console.log(currentScore)
+        let user = JSON.parse(localStorage[sessionStorage.loggedInUsr]);
+        if(user.highScore < currentScore){
+            user.highScore = currentScore;
+            localStorage[user.username] = JSON.stringify(user)
+        }
+    }
+}
+
+// function highScoreTable(){
+//     let row = "<table><tr><th>Name</th><th>Score</th></tr>";
+//     for(let key of Object.keys(localStorage)){
+//         let user = JSON.parse(localStorage[key]);
+//         row += "<tr><td>" + user.username + "</td><td>" + user.highScore + "</td></tr>";
+//     }
+//     row += "</table>";
+//     document.getElementById("score-table").innerHTML = row;
+// }
+
+function loadRankingTable(){
+    let str = "<table><tr><th>Name</th><th>Score</th></tr>";
+    for(let key of Object.keys(localStorage)){
+        let user = JSON.parse(localStorage[key]);
+        str += "<tr><td>" + user.username + "</td><td>" + user.highScore + "</td></tr>";
+    }
+    str += "</table>";
+    document.getElementById("Ranking").innerHTML = str;
+}
+
+window.onload = ()=> {
+   loadRankingTable();
+
+}
+
+
 
 
 
